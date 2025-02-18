@@ -10,8 +10,8 @@ nifti_img = nib.load('liver/labelsTr/liver_129.nii')
 data = nifti_img.get_fdata()
 
 # Apply Gaussian smoothing
-smoothed_data = gaussian_filter(data, sigma=2)  # Adjust sigma for different smooth levels
+smoothed_data = gaussian_filter(data, sigma=1)
+volume = Volume(smoothed_data).c("red").alpha([0.0, 0.5, 1.0]) 
 
-# Create a volume and display
-volume = Volume(smoothed_data)
+# Show volumes
 show(volume)
